@@ -28,13 +28,13 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: HSE_SYSCLK_8MHz.elf
+all: PLL_SYSCLOCK.elf
 
 # Tool invocations
-HSE_SYSCLK_8MHz.elf: $(OBJS) $(USER_OBJS) ../STM32F411RETx_FLASH.ld
+PLL_SYSCLOCK.elf: $(OBJS) $(USER_OBJS) ../STM32F411RETx_FLASH.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "HSE_SYSCLK_8MHz.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "PLL_SYSCLOCK.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -46,8 +46,8 @@ clean:
 
 post-build:
 	-@echo 'Generating hex and Printing size information:'
-	arm-none-eabi-objcopy -O ihex "HSE_SYSCLK_8MHz.elf" "HSE_SYSCLK_8MHz.hex"
-	arm-none-eabi-size "HSE_SYSCLK_8MHz.elf"
+	arm-none-eabi-objcopy -O ihex "PLL_SYSCLOCK.elf" "PLL_SYSCLOCK.hex"
+	arm-none-eabi-size "PLL_SYSCLOCK.elf"
 	-@echo ' '
 
 .PHONY: all clean dependents

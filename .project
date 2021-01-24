@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>HSE_SYSCLK_8MHz</name>
+	<name>PLL_SYSCLOCK</name>
 	<comment></comment>
 	<projects>
 	</projects>
