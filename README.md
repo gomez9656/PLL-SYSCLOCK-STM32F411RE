@@ -1,7 +1,6 @@
-Short example for USART2 or UART2 in STM32F411RE with the help of STM32 CubeMx. 
+Short example for PLL configuration as the system clock. 
  
-This project uses the USART2 to comunicate to the pc. You can download
-TeraTerm to see the serial monitor and check that the communciation is       working
+I use the HSI as the input clock, and create some APIs to configure the PLL to 50MHz, 84MHz and 120MHz.
 
-You can use the reset button in Nucleo Board to send from to MCU to PC, and you can write to the serial monitor to send PC to MCU, and then MCU will answer back !
+With the USART2 configuration used in the USART2-example repository I show the values in the serual monitor. You can use TerraTerm to see the values 
 
