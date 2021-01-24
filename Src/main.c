@@ -24,10 +24,26 @@ UART_HandleTypeDef huart2; //Handle of UART 2
 
 int main(){
 
+
+	RCC_OscInitTypeDef osc_init;
+	RCC_ClkInitTypeDef clk_init;
+
 	/* Basic initialization */
 	HAL_Init();
 
 	UART2_Init();
+
+	/*
+	 * Oscillator initialization. We are not actually using HSE because it does not exist
+	 * But, we use the bypass mode and is configured in this way
+	 */
+	memset(&osc_init, 0, sizeof(osc_init)); //Maybe there is garbage values, so memset to 0
+	osc_init.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	osc_init.HSEState = RCC_HSE_BYPASS;
+	if(HAL_RCC_OscConfig(&osc_init) != HAL_OK){
+
+		Error_handler();
+	}
 
 
 	while(1);
